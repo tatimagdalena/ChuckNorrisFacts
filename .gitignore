@@ -1,0 +1,13 @@
+# Ignore system files
+.DS_Store
+
+# Ignore user data
+ChuckNorrisFacts.xcodeproj/project.xcworkspace/xcuserdata/
+ChuckNorrisFacts.xcworkspace/xcuserdata/
+ChuckNorrisFacts.xcodeproj/xcuserdata/
+
+# Ignore build
+/Build
+
+# Ignore Carthage build
+Carthage/
