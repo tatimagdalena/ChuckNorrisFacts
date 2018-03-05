@@ -16,6 +16,10 @@
 		161218D92049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */; };
 		161218E82049E2C900A0C125 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; };
 		161218EE2049E33300A0C125 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		41B382C1204D912D0030362C /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C0204D912D0030362C /* Fact.swift */; };
+		41B382C3204D92460030362C /* FactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C2204D92460030362C /* FactsDataSource.swift */; };
+		41B382C5204D92680030362C /* FactsRetievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C4204D92680030362C /* FactsRetievable.swift */; };
+		41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B382C6204D972A0030362C /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFactsUITests.swift; sourceTree = "<group>"; };
 		161218DA2049BA0D00A0C125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		161218E72049E2C900A0C125 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		41B382C0204D912D0030362C /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
+		41B382C2204D92460030362C /* FactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDataSource.swift; sourceTree = "<group>"; };
+		41B382C4204D92680030362C /* FactsRetievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRetievable.swift; sourceTree = "<group>"; };
+		41B382C6204D972A0030362C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +124,7 @@
 		161218B72049BA0C00A0C125 /* ChuckNorrisFacts */ = {
 			isa = PBXGroup;
 			children = (
+				41B382BF204D91170030362C /* Domain */,
 				161218B82049BA0C00A0C125 /* AppDelegate.swift */,
 				161218BA2049BA0C00A0C125 /* ViewController.swift */,
 				161218BC2049BA0C00A0C125 /* Main.storyboard */,
@@ -146,9 +156,20 @@
 		161218E62049E2C900A0C125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41B382C6204D972A0030362C /* RxSwift.framework */,
 				161218E72049E2C900A0C125 /* Nimble.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41B382BF204D91170030362C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				41B382C0204D912D0030362C /* Fact.swift */,
+				41B382C4204D92680030362C /* FactsRetievable.swift */,
+				41B382C2204D92460030362C /* FactsDataSource.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +311,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -305,8 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B382C3204D92460030362C /* FactsDataSource.swift in Sources */,
 				161218BB2049BA0C00A0C125 /* ViewController.swift in Sources */,
+				41B382C1204D912D0030362C /* Fact.swift in Sources */,
 				161218B92049BA0C00A0C125 /* AppDelegate.swift in Sources */,
+				41B382C5204D92680030362C /* FactsRetievable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +499,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJVEE6YB6F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.tatimagdalena.ChuckNorrisFacts;
@@ -489,6 +518,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJVEE6YB6F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.tatimagdalena.ChuckNorrisFacts;
