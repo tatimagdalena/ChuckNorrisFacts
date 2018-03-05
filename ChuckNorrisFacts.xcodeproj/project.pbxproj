@@ -14,6 +14,8 @@
 		161218C32049BA0C00A0C125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161218C12049BA0C00A0C125 /* LaunchScreen.storyboard */; };
 		161218CE2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161218CD2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift */; };
 		161218D92049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */; };
+		161218E82049E2C900A0C125 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; };
+		161218EE2049E33300A0C125 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		161218E92049E2D600A0C125 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				161218EE2049E33300A0C125 /* Nimble.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		161218B52049BA0C00A0C125 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		161218B82049BA0C00A0C125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +62,7 @@
 		161218D42049BA0D00A0C125 /* ChuckNorrisFactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisFactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFactsUITests.swift; sourceTree = "<group>"; };
 		161218DA2049BA0D00A0C125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		161218E72049E2C900A0C125 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161218E82049E2C900A0C125 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,7 @@
 				161218CC2049BA0D00A0C125 /* ChuckNorrisFactsTests */,
 				161218D72049BA0D00A0C125 /* ChuckNorrisFactsUITests */,
 				161218B62049BA0C00A0C125 /* Products */,
+				161218E62049E2C900A0C125 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +143,14 @@
 			path = ChuckNorrisFactsUITests;
 			sourceTree = "<group>";
 		};
+		161218E62049E2C900A0C125 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				161218E72049E2C900A0C125 /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +161,7 @@
 				161218B12049BA0C00A0C125 /* Sources */,
 				161218B22049BA0C00A0C125 /* Frameworks */,
 				161218B32049BA0C00A0C125 /* Resources */,
+				161218EF2049E87900A0C125 /* Carthage Run Script */,
 			);
 			buildRules = (
 			);
@@ -152,6 +179,7 @@
 				161218C52049BA0D00A0C125 /* Sources */,
 				161218C62049BA0D00A0C125 /* Frameworks */,
 				161218C72049BA0D00A0C125 /* Resources */,
+				161218E92049E2D600A0C125 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -253,6 +281,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		161218EF2049E87900A0C125 /* Carthage Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+			);
+			name = "Carthage Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		161218B12049BA0C00A0C125 /* Sources */ = {
@@ -459,6 +505,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJVEE6YB6F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.tatimagdalena.ChuckNorrisFactsTests;
@@ -476,6 +526,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJVEE6YB6F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.tatimagdalena.ChuckNorrisFactsTests;
