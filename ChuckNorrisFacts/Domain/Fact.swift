@@ -11,5 +11,5 @@ import Foundation
 struct Fact {
     let id: String
     let phrase: String
-    let category: String
+    let category: [String]
 }

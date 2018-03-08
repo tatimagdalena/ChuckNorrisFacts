@@ -16,10 +16,25 @@
 		161218D92049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */; };
 		161218E82049E2C900A0C125 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; };
 		161218EE2049E33300A0C125 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161218E72049E2C900A0C125 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		161218F2204EC17400A0C125 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218F0204EC17400A0C125 /* RxAlamofire.framework */; };
+		161218F3204EC17400A0C125 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218F1204EC17400A0C125 /* Alamofire.framework */; };
+		161218F5204EC19B00A0C125 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218F4204EC19A00A0C125 /* RxCocoa.framework */; };
+		161218F7204ED22100A0C125 /* FactsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161218F6204ED22100A0C125 /* FactsDataSourceTests.swift */; };
+		161218FE204ED43F00A0C125 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218FC204ED43F00A0C125 /* RxTest.framework */; };
+		161218FF204ED43F00A0C125 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161218FD204ED43F00A0C125 /* RxBlocking.framework */; };
+		16121900204ED44800A0C125 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161218FD204ED43F00A0C125 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		16121901204ED44800A0C125 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161218FC204ED43F00A0C125 /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		16121903204F176E00A0C125 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16121902204F176E00A0C125 /* RequestError.swift */; };
+		1612190520507F8A00A0C125 /* RequestErrorHandler .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612190420507F8A00A0C125 /* RequestErrorHandler .swift */; };
+		16121907205086B600A0C125 /* FactsModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16121906205086B600A0C125 /* FactsModelMapper.swift */; };
+		161219092050A32F00A0C125 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161219082050A32F00A0C125 /* OHHTTPStubs.framework */; };
+		1612190A2050A33500A0C125 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161219082050A32F00A0C125 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1612190C2051606A00A0C125 /* RequestErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */; };
 		41B382C1204D912D0030362C /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C0204D912D0030362C /* Fact.swift */; };
-		41B382C3204D92460030362C /* FactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C2204D92460030362C /* FactsDataSource.swift */; };
 		41B382C5204D92680030362C /* FactsRetievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C4204D92680030362C /* FactsRetievable.swift */; };
 		41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B382C6204D972A0030362C /* RxSwift.framework */; };
+		41B382CA204DCF2C0030362C /* FactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C9204DCF2C0030362C /* FactsDataSource.swift */; };
+		41B382CC204DD9C30030362C /* FactsQueryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382CB204DD9C30030362C /* FactsQueryDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +61,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1612190A2050A33500A0C125 /* OHHTTPStubs.framework in CopyFiles */,
+				16121900204ED44800A0C125 /* RxBlocking.framework in CopyFiles */,
+				16121901204ED44800A0C125 /* RxTest.framework in CopyFiles */,
 				161218EE2049E33300A0C125 /* Nimble.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,10 +85,22 @@
 		161218D82049BA0D00A0C125 /* ChuckNorrisFactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFactsUITests.swift; sourceTree = "<group>"; };
 		161218DA2049BA0D00A0C125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		161218E72049E2C900A0C125 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		161218F0204EC17400A0C125 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		161218F1204EC17400A0C125 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		161218F4204EC19A00A0C125 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		161218F6204ED22100A0C125 /* FactsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDataSourceTests.swift; sourceTree = "<group>"; };
+		161218FC204ED43F00A0C125 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		161218FD204ED43F00A0C125 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		16121902204F176E00A0C125 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		1612190420507F8A00A0C125 /* RequestErrorHandler .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestErrorHandler .swift"; sourceTree = "<group>"; };
+		16121906205086B600A0C125 /* FactsModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModelMapper.swift; sourceTree = "<group>"; };
+		161219082050A32F00A0C125 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorHandlerTests.swift; sourceTree = "<group>"; };
 		41B382C0204D912D0030362C /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
-		41B382C2204D92460030362C /* FactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDataSource.swift; sourceTree = "<group>"; };
 		41B382C4204D92680030362C /* FactsRetievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRetievable.swift; sourceTree = "<group>"; };
 		41B382C6204D972A0030362C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		41B382C9204DCF2C0030362C /* FactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDataSource.swift; sourceTree = "<group>"; };
+		41B382CB204DD9C30030362C /* FactsQueryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsQueryDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +109,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */,
+				161218F2204EC17400A0C125 /* RxAlamofire.framework in Frameworks */,
+				161218F3204EC17400A0C125 /* Alamofire.framework in Frameworks */,
+				161218F5204EC19B00A0C125 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161219092050A32F00A0C125 /* OHHTTPStubs.framework in Frameworks */,
+				161218FF204ED43F00A0C125 /* RxBlocking.framework in Frameworks */,
+				161218FE204ED43F00A0C125 /* RxTest.framework in Frameworks */,
 				161218E82049E2C900A0C125 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +160,7 @@
 		161218B72049BA0C00A0C125 /* ChuckNorrisFacts */ = {
 			isa = PBXGroup;
 			children = (
+				41B382C8204DC3870030362C /* Data */,
 				41B382BF204D91170030362C /* Domain */,
 				161218B82049BA0C00A0C125 /* AppDelegate.swift */,
 				161218BA2049BA0C00A0C125 /* ViewController.swift */,
@@ -139,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				161218CD2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift */,
+				161218F6204ED22100A0C125 /* FactsDataSourceTests.swift */,
+				1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */,
 				161218CF2049BA0D00A0C125 /* Info.plist */,
 			);
 			path = ChuckNorrisFactsTests;
@@ -156,6 +195,12 @@
 		161218E62049E2C900A0C125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				161219082050A32F00A0C125 /* OHHTTPStubs.framework */,
+				161218FD204ED43F00A0C125 /* RxBlocking.framework */,
+				161218FC204ED43F00A0C125 /* RxTest.framework */,
+				161218F4204EC19A00A0C125 /* RxCocoa.framework */,
+				161218F1204EC17400A0C125 /* Alamofire.framework */,
+				161218F0204EC17400A0C125 /* RxAlamofire.framework */,
 				41B382C6204D972A0030362C /* RxSwift.framework */,
 				161218E72049E2C900A0C125 /* Nimble.framework */,
 			);
@@ -167,9 +212,20 @@
 			children = (
 				41B382C0204D912D0030362C /* Fact.swift */,
 				41B382C4204D92680030362C /* FactsRetievable.swift */,
-				41B382C2204D92460030362C /* FactsDataSource.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		41B382C8204DC3870030362C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				41B382C9204DCF2C0030362C /* FactsDataSource.swift */,
+				16121902204F176E00A0C125 /* RequestError.swift */,
+				41B382CB204DD9C30030362C /* FactsQueryDataModel.swift */,
+				1612190420507F8A00A0C125 /* RequestErrorHandler .swift */,
+				16121906205086B600A0C125 /* FactsModelMapper.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +368,12 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OHHTTPStubs.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -327,10 +389,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41B382C3204D92460030362C /* FactsDataSource.swift in Sources */,
+				16121903204F176E00A0C125 /* RequestError.swift in Sources */,
 				161218BB2049BA0C00A0C125 /* ViewController.swift in Sources */,
+				41B382CC204DD9C30030362C /* FactsQueryDataModel.swift in Sources */,
 				41B382C1204D912D0030362C /* Fact.swift in Sources */,
 				161218B92049BA0C00A0C125 /* AppDelegate.swift in Sources */,
+				1612190520507F8A00A0C125 /* RequestErrorHandler .swift in Sources */,
+				16121907205086B600A0C125 /* FactsModelMapper.swift in Sources */,
+				41B382CA204DCF2C0030362C /* FactsDataSource.swift in Sources */,
 				41B382C5204D92680030362C /* FactsRetievable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +405,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1612190C2051606A00A0C125 /* RequestErrorHandlerTests.swift in Sources */,
+				161218F7204ED22100A0C125 /* FactsDataSourceTests.swift in Sources */,
 				161218CE2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
