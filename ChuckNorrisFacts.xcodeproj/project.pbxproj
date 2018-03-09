@@ -30,6 +30,13 @@
 		161219092050A32F00A0C125 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161219082050A32F00A0C125 /* OHHTTPStubs.framework */; };
 		1612190A2050A33500A0C125 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161219082050A32F00A0C125 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1612190C2051606A00A0C125 /* RequestErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */; };
+		16B52A892051F1F600FCD564 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A882051F1F600FCD564 /* Networking.swift */; };
+		16B52A8B205290D700FCD564 /* NetworkRequestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A8A205290D700FCD564 /* NetworkRequestsTests.swift */; };
+		16B52A8E2052932E00FCD564 /* Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B52A8D2052932E00FCD564 /* Cuckoo.framework */; };
+		16B52A90205294B600FCD564 /* HandleRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A8F205294B600FCD564 /* HandleRequestError.swift */; };
+		16B52A922052956000FCD564 /* MapFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A912052956000FCD564 /* MapFacts.swift */; };
+		16B52A94205295E500FCD564 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A93205295E500FCD564 /* NetworkRequests.swift */; };
+		16B52A96205299CF00FCD564 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A95205299CF00FCD564 /* GeneratedMocks.swift */; };
 		41B382C1204D912D0030362C /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C0204D912D0030362C /* Fact.swift */; };
 		41B382C5204D92680030362C /* FactsRetievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B382C4204D92680030362C /* FactsRetievable.swift */; };
 		41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B382C6204D972A0030362C /* RxSwift.framework */; };
@@ -96,6 +103,13 @@
 		16121906205086B600A0C125 /* FactsModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModelMapper.swift; sourceTree = "<group>"; };
 		161219082050A32F00A0C125 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorHandlerTests.swift; sourceTree = "<group>"; };
+		16B52A882051F1F600FCD564 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		16B52A8A205290D700FCD564 /* NetworkRequestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestsTests.swift; sourceTree = "<group>"; };
+		16B52A8D2052932E00FCD564 /* Cuckoo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cuckoo.framework; path = Carthage/Build/iOS/Cuckoo.framework; sourceTree = "<group>"; };
+		16B52A8F205294B600FCD564 /* HandleRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRequestError.swift; sourceTree = "<group>"; };
+		16B52A912052956000FCD564 /* MapFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFacts.swift; sourceTree = "<group>"; };
+		16B52A93205295E500FCD564 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		16B52A95205299CF00FCD564 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		41B382C0204D912D0030362C /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
 		41B382C4204D92680030362C /* FactsRetievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRetievable.swift; sourceTree = "<group>"; };
 		41B382C6204D972A0030362C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -108,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B52A8E2052932E00FCD564 /* Cuckoo.framework in Frameworks */,
 				41B382C7204D972A0030362C /* RxSwift.framework in Frameworks */,
 				161218F2204EC17400A0C125 /* RxAlamofire.framework in Frameworks */,
 				161218F3204EC17400A0C125 /* Alamofire.framework in Frameworks */,
@@ -175,9 +190,11 @@
 		161218CC2049BA0D00A0C125 /* ChuckNorrisFactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				16B52A95205299CF00FCD564 /* GeneratedMocks.swift */,
 				161218CD2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift */,
 				161218F6204ED22100A0C125 /* FactsDataSourceTests.swift */,
 				1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */,
+				16B52A8A205290D700FCD564 /* NetworkRequestsTests.swift */,
 				161218CF2049BA0D00A0C125 /* Info.plist */,
 			);
 			path = ChuckNorrisFactsTests;
@@ -195,6 +212,7 @@
 		161218E62049E2C900A0C125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16B52A8D2052932E00FCD564 /* Cuckoo.framework */,
 				161219082050A32F00A0C125 /* OHHTTPStubs.framework */,
 				161218FD204ED43F00A0C125 /* RxBlocking.framework */,
 				161218FC204ED43F00A0C125 /* RxTest.framework */,
@@ -222,8 +240,12 @@
 				41B382C9204DCF2C0030362C /* FactsDataSource.swift */,
 				16121902204F176E00A0C125 /* RequestError.swift */,
 				41B382CB204DD9C30030362C /* FactsQueryDataModel.swift */,
+				16B52A8F205294B600FCD564 /* HandleRequestError.swift */,
 				1612190420507F8A00A0C125 /* RequestErrorHandler .swift */,
+				16B52A912052956000FCD564 /* MapFacts.swift */,
 				16121906205086B600A0C125 /* FactsModelMapper.swift */,
+				16B52A882051F1F600FCD564 /* Networking.swift */,
+				16B52A93205295E500FCD564 /* NetworkRequests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -239,6 +261,7 @@
 				161218B22049BA0C00A0C125 /* Frameworks */,
 				161218B32049BA0C00A0C125 /* Resources */,
 				161218EF2049E87900A0C125 /* Carthage Run Script */,
+				16B52A8C205292AF00FCD564 /* Cuckoo Run Script */,
 			);
 			buildRules = (
 			);
@@ -374,6 +397,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OHHTTPStubs.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cuckoo.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -382,6 +406,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		16B52A8C205292AF00FCD564 /* Cuckoo Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Cuckoo Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR//${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\nCarthage/Checkouts/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ChuckNorrisFacts/Data/HandleRequestError.swift\" \\\n\"$INPUT_DIR/ChuckNorrisFacts/Data/MapFacts.swift\" \\\n\"$INPUT_DIR/ChuckNorrisFacts/Data/Networking.swift\" \\\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -389,7 +427,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B52A922052956000FCD564 /* MapFacts.swift in Sources */,
 				16121903204F176E00A0C125 /* RequestError.swift in Sources */,
+				16B52A892051F1F600FCD564 /* Networking.swift in Sources */,
 				161218BB2049BA0C00A0C125 /* ViewController.swift in Sources */,
 				41B382CC204DD9C30030362C /* FactsQueryDataModel.swift in Sources */,
 				41B382C1204D912D0030362C /* Fact.swift in Sources */,
@@ -398,6 +438,8 @@
 				16121907205086B600A0C125 /* FactsModelMapper.swift in Sources */,
 				41B382CA204DCF2C0030362C /* FactsDataSource.swift in Sources */,
 				41B382C5204D92680030362C /* FactsRetievable.swift in Sources */,
+				16B52A90205294B600FCD564 /* HandleRequestError.swift in Sources */,
+				16B52A94205295E500FCD564 /* NetworkRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +449,9 @@
 			files = (
 				1612190C2051606A00A0C125 /* RequestErrorHandlerTests.swift in Sources */,
 				161218F7204ED22100A0C125 /* FactsDataSourceTests.swift in Sources */,
+				16B52A8B205290D700FCD564 /* NetworkRequestsTests.swift in Sources */,
 				161218CE2049BA0D00A0C125 /* ChuckNorrisFactsTests.swift in Sources */,
+				16B52A96205299CF00FCD564 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

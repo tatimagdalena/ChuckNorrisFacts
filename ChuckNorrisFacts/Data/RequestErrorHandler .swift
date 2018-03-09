@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 
-struct RequestErrorHandler {
+struct RequestErrorHandler: HandleRequestError {
     
     func handleHttpStatusCodeError(response: HTTPURLResponse) throws {
         switch response.statusCode {

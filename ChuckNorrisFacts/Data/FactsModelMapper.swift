@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-struct FactsModelMapper {
+struct FactsModelMapper: MapFacts {
     
     func transformToFactsQueryDataModel(json: Any) throws -> FactsQueryDataModel {
         guard let jsonDictionary = json as? [String : Any] else { throw RequestError.Response.cannotParse }
@@ -30,7 +30,7 @@ struct FactsModelMapper {
         return Observable.from(facts)
     }
     
-    func transformToDomainModel(dataModel: FactsQueryDataModel.Result) throws -> Fact {
+    private func transformToDomainModel(dataModel: FactsQueryDataModel.Result) throws -> Fact {
         guard let id = dataModel.id,
             let value = dataModel.value
             else { throw RequestError.Response.missingParameter }
@@ -38,7 +38,7 @@ struct FactsModelMapper {
         return Fact(id: id, phrase: value, category: dataModel.category ?? [String]())
     }
     
-    func deserializeFactsQuery(json: [String : Any]) -> FactsQueryDataModel {
+    private func deserializeFactsQuery(json: [String : Any]) -> FactsQueryDataModel {
         return FactsQueryDataModel(from: json)
     }
     

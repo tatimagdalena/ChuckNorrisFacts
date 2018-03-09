@@ -8,17 +8,15 @@
 
 import Foundation
 import RxSwift
-import RxAlamofire
-import Alamofire
 
 struct FactsDataSource {
     private let baseUrl = "https://api.chucknorris.io/jokes/search"
     
-    let errorHandler: RequestErrorHandler
-    let mapper: FactsModelMapper
+    let networking: Networking
+    let mapper: MapFacts
     
-    init(errorHandler: RequestErrorHandler, mapper: FactsModelMapper) {
-        self.errorHandler = errorHandler
+    init(networking: Networking, mapper: MapFacts) {
+        self.networking = networking
         self.mapper = mapper
     }
 }
@@ -31,11 +29,8 @@ extension FactsDataSource: FactsRetrievable {
         
         let queryParameters = ["query" : term as Any]
         
-        return RxAlamofire
-            .requestJSON(.get, baseUrl, parameters: queryParameters, encoding: URLEncoding.default)
-            .catchError(errorHandler.handleCatchedRequestError)
-            .do(onNext: { (response, json) in try self.errorHandler.handleHttpStatusCodeError(response: response) })
-            .map({ (response, json) in try self.mapper.transformToFactsQueryDataModel(json: json) })
+        return networking.getHTTPRequestObservable(url: baseUrl, parameters: queryParameters, headers: nil)
+            .map(mapper.transformToFactsQueryDataModel)
             .map(mapper.transformToFactsArray)
             .flatMap(mapper.transformToFactObservable)
     }
