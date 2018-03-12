@@ -8,40 +8,17 @@
 
 import Foundation
 
-struct FactsQueryDataModel {
+struct FactsQueryDataModel: Decodable {
     var total: Int?
     var result: [Result]?
-
-    init(from json: [String : Any]) {
-        total = json["total"] as? Int
-        if let resultJsonArray = json["result"] as? [[String : Any]] {
-            result = []
-            for resultJson in resultJsonArray {
-                result?.append(Result(from: resultJson))
-            }
-        }
-
-    }
 }
 
-// MARK: - Inner structs -
-
 extension FactsQueryDataModel {
-    struct Result {
+    struct Result: Decodable {
         var category: [String]?
         var icon_url: String?
         var id: String?
         var url: String?
         var value: String?
-
-        init(from json: [String : Any]) {
-            category = json["category"] as? [String]
-            icon_url = json["icon_url"] as? String
-            id = json["id"] as? String
-            url = json["url"] as? String
-            value = json["value"] as? String
-        }
     }
 }
-
-

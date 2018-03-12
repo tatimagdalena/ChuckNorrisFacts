@@ -104,9 +104,9 @@ class RequestErrorHandlerTests: XCTestCase {
         return URLError(_nsError: nsError)
     }
     
-    private func generateObserver(from observable: Observable<(HTTPURLResponse, Any)>) -> TestableObserver<(HTTPURLResponse, Any)> {
+    private func generateObserver(from observable: Observable<(HTTPURLResponse, Data)>) -> TestableObserver<(HTTPURLResponse, Data)> {
         let testScheduler = TestScheduler(initialClock: 0)
-        let observer = testScheduler.createObserver((HTTPURLResponse, Any).self)
+        let observer = testScheduler.createObserver((HTTPURLResponse, Data).self)
         observable.asObservable().subscribe(observer).disposed(by: disposeBag)
         testScheduler.start()
         return observer

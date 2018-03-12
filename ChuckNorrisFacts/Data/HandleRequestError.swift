@@ -11,5 +11,5 @@ import RxSwift
 
 protocol HandleRequestError {
     func handleHttpStatusCodeError(response: HTTPURLResponse) throws
-    func handleCatchedRequestError(_ error: Error) -> Observable<(HTTPURLResponse, Any)>
+    func handleCatchedRequestError(_ error: Error) -> Observable<(HTTPURLResponse, Data)>
 }

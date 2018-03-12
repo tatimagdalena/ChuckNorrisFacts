@@ -19,13 +19,12 @@ struct NetworkRequests: Networking {
         self.errorHandler = errorHandler
     }
     
-    func getHTTPRequestObservable(url: String, parameters: [String : Any]? = nil, headers: [String : String]? = nil) -> Observable<Any> {
-        
+    func getHTTPRequestObservable(url: String, parameters: [String : Any]? = nil, headers: [String : String]? = nil) -> Observable<Data> {
         return RxAlamofire
-            .requestJSON(.get, url, parameters: parameters, encoding: URLEncoding.default)
+            .requestData(.get, url, parameters: parameters, encoding: URLEncoding.default)
             .catchError(errorHandler.handleCatchedRequestError)
             .do(onNext: { (response, json) in try self.errorHandler.handleHttpStatusCodeError(response: response) })
-            .map({ (response, json) in return json })
+            .map({ (response, jsonData) in jsonData })
     }
     
 }
