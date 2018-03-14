@@ -1,0 +1,19 @@
+{
+    "total": 2,
+    "result": [
+        {
+            "category": null,
+            "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+            "id": "Ne-M6C0cQbC8Syy06efbJQ",
+            "url": "https://api.chucknorris.io/jokes/Ne-M6C0cQbC8Syy06efbJQ",
+            "value": null
+        },
+        {
+            "category": null,
+            "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+            "id": "r736GJqfQ2WdaTBQKR1Xbg",
+            "url": "https://api.chucknorris.io/jokes/r736GJqfQ2WdaTBQKR1Xbg",
+            "value": "The Death Star's original name was Space Station Chuck Norris."
+        }
+    ]
+}

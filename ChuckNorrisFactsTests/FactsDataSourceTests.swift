@@ -16,8 +16,8 @@ import Nimble
 class FactsDataSourceTests: XCTestCase {
     
     private var dataSourceUnderTest: FactsDataSource!
-    private var networkingMock: MyMockNetworking!
-    private var mapperMock: MyMockMapFacts!
+    private var networkingMock: MyMocks.NetworkRequests!
+    private var mapperMock: MyMocks.FactsModelMapper!
     
     override func setUp() {
         super.setUp()
@@ -66,15 +66,15 @@ class FactsDataSourceTests: XCTestCase {
     }
     
     private func prepareForTest(responseType: Dummy.APIResponse) {
-        networkingMock = MyMockNetworking(responseType: responseType)
-        mapperMock = MyMockMapFacts(responseType: responseType)
+        networkingMock = MyMocks.NetworkRequests(responseType: responseType)
+        mapperMock = MyMocks.FactsModelMapper(responseType: responseType)
         dataSourceUnderTest = FactsDataSource(networking: networkingMock, mapper: mapperMock)
     }
     
-    private func assertMapperCallsExpectations(mapper: MyMockMapFacts, values: AssertMapperValues, caller: String) {
-        expect(mapper.toFactsQueryCallCount).to(equal(values.toFactsQueryCallCount))
-        expect(mapper.toFactArrayCallCount).to(equal(values.toFactArrayCallCount))
-        expect(mapper.toObservableCallCount).to(equal(values.toObservableCallCount))
+    private func assertMapperCallsExpectations(mapper: MyMocks.FactsModelMapper, values: AssertMapperValues, caller: String) {
+        expect(mapper.toFactsQueryCallCount).to(equal(values.toFactsQueryCallCount), description: "In \(caller)")
+        expect(mapper.toFactArrayCallCount).to(equal(values.toFactArrayCallCount), description: "In \(caller)")
+        expect(mapper.toObservableCallCount).to(equal(values.toObservableCallCount), description: "In \(caller)")
     }
     
 }
@@ -87,93 +87,4 @@ extension FactsDataSourceTests {
         var toObservableCallCount: Int
     }
     
-    class MyMockMapFacts: MapFacts {
-        
-        var toFactsQueryCallCount = 0
-        var toFactArrayCallCount = 0
-        var toObservableCallCount = 0
-        
-        var responseType: Dummy.APIResponse
-        init(responseType: Dummy.APIResponse) {
-            self.responseType = responseType
-        }
-        
-        func transformToFactsQueryDataModel(json: Any) throws -> FactsQueryDataModel {
-            toFactsQueryCallCount += 1
-            switch responseType {
-            case .validJSON: return FactsQueryDataModel(from: Dummy.jsonArray)
-            case .invalidJSON: throw RequestError.Response.cannotParse
-            case .error: throw RequestError.generic
-            }
-        }
-        
-        func transformToFactsArray(factsQuery: FactsQueryDataModel) throws -> [Fact] {
-            toFactArrayCallCount += 1
-            let fact = Fact(id: "jfjfi", phrase: "some phrase", category: [])
-            return [fact]
-        }
-        
-        func transformToFactObservable(facts: [Fact]) -> Observable<Fact> {
-            toObservableCallCount += 1
-            let fact = Fact(id: "jfjfi", phrase: "some phrase", category: [])
-            let fact2 = Fact(id: "jfjfi", phrase: "some phrase", category: [])
-            return Observable.from([fact, fact2])
-        }
-    }
-    
-    class MyMockNetworking: Networking {
-        
-        var responseType: Dummy.APIResponse
-        init(responseType: Dummy.APIResponse) {
-            self.responseType = responseType
-        }
-        
-        func getHTTPRequestObservable(url: String, parameters: [String : Any]?, headers: [String : String]? = nil) -> Observable<Any> {
-            switch responseType {
-            case .validJSON: return Observable.just(Dummy.dataJSONContent as Any)
-            case .invalidJSON: return Observable.just(Dummy.dataJSONErrorContent as Any)
-            case .error: return Observable.error(RequestError.generic)
-            }
-        }
-        
-    }
-    
-    struct Dummy {
-        
-        enum APIResponse {
-            case validJSON
-            case invalidJSON
-            case error
-        }
-        
-        static let dataJSONContent = """
-        {\"total\":2,\"result\":\
-        "[{\"category\":null,\"icon_url\":\"some-icon-url\",\"id\":\"tjq8lv6lqi-uoo5cxiu2oa\",\"url\":\"some-url\",\"value\":\"This one has no category.\"},\
-        "{\"category\":null,\"icon_url\":\"some-icon-url\",\"id\":\"H7lHICEVSsW25ffciJEjxw\",\"url\":\"some-url\",\"value\":\"This one has no cateogry.\"}]}
-        """
-        static let dataJSONErrorContent = """
-        {\"total\":4,\"result\":\
-        "[{\"category\":null,\"icon_url\":\"some-icon-url\",\"id\":\"tjq8lv6lqi-uoo5cxiu2oa\",\"url\":\"some-url\",\"value\":\"This one has no category.\"},\
-        "{\"category\":\"category1\",\"icon_url\":\"some-icon-url\",\"id\":\"H7lHICEVSsW25ffciJEjxw\",\"url\":\"some-url\",\"value\":\"This one has all properties.\"},\
-        "{\"category\":\"category2\",\"icon_url\":\"some-icon-url\",\"id\":\"H7lHICEVSsW25ffciJEjxw\",\"url\":\"some-url\",\"value\":null},\
-        "{\"category\":null,\"icon_url\":\"some-icon-url\",\"id\":null,\"url\":\"some-url\",\"value\":\"This one is missing an id.\"}]}
-        """
-        
-        static let jsonArray: [String : Any] = [ "total": 2,
-                                                 "result": [[ "category": nil,
-                                                              "icon_url": "someurl",
-                                                              "id": "someid",
-                                                              "url": "someurl",
-                                                              "value": "somephrase",
-                                                              ],
-                                                            [ "category": nil,
-                                                              "icon_url": "someurl",
-                                                              "id": "someid",
-                                                              "url": "someurl",
-                                                              "value": "somephrase",
-                                                              ]],
-                                                 ]
-        
-        
-    }
 }

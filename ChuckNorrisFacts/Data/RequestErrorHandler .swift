@@ -26,7 +26,7 @@ struct RequestErrorHandler: HandleRequestError {
         }
     }
     
-    func handleCatchedRequestError(_ error: Error) -> Observable<(HTTPURLResponse, Any)> {
+    func handleCatchedRequestError(_ error: Error) -> Observable<(HTTPURLResponse, Data)> {
         switch error {
         case let urlError as URLError:
             let domainError = transformToDomainError(urlError: urlError)

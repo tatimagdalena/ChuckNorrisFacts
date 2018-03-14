@@ -11,9 +11,12 @@ import RxSwift
 
 struct FactsModelMapper: MapFacts {
     
-    func transformToFactsQueryDataModel(json: Any) throws -> FactsQueryDataModel {
-        guard let jsonDictionary = json as? [String : Any] else { throw RequestError.Response.cannotParse }
-        return self.deserializeFactsQuery(json: jsonDictionary)
+    func transformToFactsQueryDataModel(jsonData: Data) throws -> FactsQueryDataModel {
+        do {
+            return try JSONDecoder().decode(FactsQueryDataModel.self, from: jsonData)
+        } catch {
+            throw RequestError.Response.cannotParse
+        }
     }
     
     func transformToFactsArray(factsQuery: FactsQueryDataModel) throws -> [Fact] {
@@ -30,16 +33,19 @@ struct FactsModelMapper: MapFacts {
         return Observable.from(facts)
     }
     
+    func transformToFactOutput(fact: Fact) -> FactOutput {
+        return FactOutput(phrase: fact.phrase,
+                          category: fact.category.isEmpty ? "UNCATEGORIZED" : fact.category[0].capitalized,
+                          categoryColor: fact.category.isEmpty ? Color.darkGray : Color.blue,
+                          fontSize: fact.phrase.count > 50 ? 14 : 16)
+    }
+    
     private func transformToDomainModel(dataModel: FactsQueryDataModel.Result) throws -> Fact {
         guard let id = dataModel.id,
             let value = dataModel.value
             else { throw RequestError.Response.missingParameter }
         
         return Fact(id: id, phrase: value, category: dataModel.category ?? [String]())
-    }
-    
-    private func deserializeFactsQuery(json: [String : Any]) -> FactsQueryDataModel {
-        return FactsQueryDataModel(from: json)
     }
     
 }

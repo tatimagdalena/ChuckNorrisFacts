@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol Networking {
-    func getHTTPRequestObservable(url: String, parameters: [String : Any]?, headers: [String : String]?) -> Observable<Any>
+    func getHTTPRequestObservable(url: String, parameters: [String : Any]?, headers: [String : String]?) -> Observable<Data>
 }
 
 

@@ -10,7 +10,8 @@ import Foundation
 import RxSwift
 
 protocol MapFacts {
-    func transformToFactsQueryDataModel(json: Any) throws -> FactsQueryDataModel
+    func transformToFactsQueryDataModel(jsonData: Data) throws -> FactsQueryDataModel
     func transformToFactsArray(factsQuery: FactsQueryDataModel) throws -> [Fact]
     func transformToFactObservable(facts: [Fact]) -> Observable<Fact>
+    func transformToFactOutput(fact: Fact) -> FactOutput
 }

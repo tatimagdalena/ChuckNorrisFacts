@@ -2,4 +2,3 @@ github "Quick/Nimble"
 github "ReactiveX/RxSwift" ~> 4.0
 github "RxSwiftCommunity/RxAlamofire" "master"
 github "AliSoftware/OHHTTPStubs"
-github "SwiftKit/Cuckoo"
