@@ -9,7 +9,7 @@
 import XCTest
 import Nimble
 import RxSwift
-import RxTest
+import RxBlocking
 import Alamofire
 @testable import ChuckNorrisFacts
 
@@ -46,55 +46,53 @@ class RequestErrorHandlerTests: XCTestCase {
     
     func testBadRequest() {
         let response = HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Client.badRequest))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.client(.badRequest)))
     }
     
     func testUnauthorized() {
         let response = HTTPURLResponse(url: url, statusCode: 401, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Client.unauthorized))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.client(.unauthorized)))
     }
     
     func testGenericClientError() {
         let response = HTTPURLResponse(url: url, statusCode: 402, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Client.generic))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.client(.generic)))
     }
     
     func testNotFound() {
         let response = HTTPURLResponse(url: url, statusCode: 404, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Client.notFound))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.client(.notFound)))
     }
     
     func testInternalServerError() {
         let response = HTTPURLResponse(url: url, statusCode: 500, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Server.internalServerError))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.server(.internalServerError)))
     }
     
     func testServiveUnavailable() {
         let response = HTTPURLResponse(url: url, statusCode: 503, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Server.serviceUnavailable))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.server(.serviceUnavailable)))
     }
     
     func testGenericServerError() {
         let response = HTTPURLResponse(url: url, statusCode: 501, httpVersion: nil, headerFields: header)!
-        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.Server.generic))
+        expect { try self.handlerUnderTest.handleHttpStatusCodeError(response: response) }.to(throwError(RequestError.server(.generic)))
     }
     
     // MARK: - Thrown url request error tests -
     
     func test_URLError_NoConnectionError() {
         let urlError = createUrlError(errorCode: URLError.notConnectedToInternet)
-        let observable = handlerUnderTest.handleCatchedRequestError(urlError)
-        let observer = generateObserver(from: observable)
-        let observerFirstError = observer.events[0].value.error
-        expect(observer.events.count).to(equal(1), description: "There is no event being emitted")
-        expect(observerFirstError).notTo(beNil(), description: "There is no error being emmited")
-        expect(observerFirstError).to(beAKindOf(RequestError.Url.self), description: "Emitted error is not an RequestError.Url as expected")
-        
-        let requestErrorUrl = observerFirstError as? RequestError.Url
-        switch requestErrorUrl {
-        case .noConnection?: break
-        case .none: break
-        default: fail("Emitted error is an URLError of type \(requestErrorUrl!), not the expected noConnection type")
+        do {
+            let response = try handlerUnderTest
+                .handleCatchedRequestError(urlError)
+                .toBlocking()
+                .first()
+            expect(response).to(beNil())
+        } catch RequestError.url(.noConnection) {
+            // expected error was thrown
+        } catch {
+            fail("The error was not correctly mapped to a no connection domain error.")
         }
     }
     
@@ -104,30 +102,20 @@ class RequestErrorHandlerTests: XCTestCase {
         return URLError(_nsError: nsError)
     }
     
-    private func generateObserver(from observable: Observable<(HTTPURLResponse, Data)>) -> TestableObserver<(HTTPURLResponse, Data)> {
-        let testScheduler = TestScheduler(initialClock: 0)
-        let observer = testScheduler.createObserver((HTTPURLResponse, Data).self)
-        observable.asObservable().subscribe(observer).disposed(by: disposeBag)
-        testScheduler.start()
-        return observer
-    }
-    
     // MARK: - Thrown alamofire request error tests -
     
     func test_AFError_InvalidURL() {
         let afError = AFError.invalidURL(url: URL(string: "test.com")!)
-        let observable = handlerUnderTest.handleCatchedRequestError(afError)
-        let observer = generateObserver(from: observable)
-        let observerFirstError = observer.events[0].value.error
-        expect(observer.events.count).to(equal(1), description: "There is no event being emitted")
-        expect(observerFirstError).notTo(beNil(), description: "There is no error being emmited")
-        expect(observerFirstError).to(beAKindOf(RequestError.Request.self), description: "Emitted error is not an RequestError.Request as expected")
-        
-        let requestErrorAlamofire = observerFirstError as? RequestError.Request
-        switch requestErrorAlamofire {
-        case .invalidUrl?: break
-        case .none: break
-        default: fail("Emitted error is an URLError of type \(requestErrorAlamofire!), not the expected noConnection type")
+        do {
+            let response = try handlerUnderTest
+                .handleCatchedRequestError(afError)
+                .toBlocking()
+                .first()
+            expect(response).to(beNil())
+        } catch RequestError.request(.invalidUrl) {
+            // expected error was thrown
+        } catch {
+            fail("The error was not correctly mapped to a no connection domain error.")
         }
     }
 }
