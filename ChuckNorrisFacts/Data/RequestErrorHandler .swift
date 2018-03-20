@@ -15,13 +15,13 @@ struct RequestErrorHandler: HandleRequestError {
     func handleHttpStatusCodeError(response: HTTPURLResponse) throws {
         switch response.statusCode {
         case 200..<300: break
-        case 400: throw RequestError.Client.badRequest
-        case 401: throw RequestError.Client.unauthorized
-        case 404: throw RequestError.Client.notFound
-        case 400..<500: throw RequestError.Client.generic
-        case 500: throw RequestError.Server.internalServerError
-        case 503: throw RequestError.Server.serviceUnavailable
-        case 500..<600: throw RequestError.Server.generic
+        case 400: throw RequestError.client(.badRequest)
+        case 401: throw RequestError.client(.unauthorized)
+        case 404: throw RequestError.client(.notFound)
+        case 400..<500: throw RequestError.client(.generic)
+        case 500: throw RequestError.server(.internalServerError)
+        case 503: throw RequestError.server(.serviceUnavailable)
+        case 500..<600: throw RequestError.server(.generic)
         default: throw RequestError.generic
         }
     }
@@ -41,22 +41,22 @@ struct RequestErrorHandler: HandleRequestError {
         return Observable.error(RequestError.generic)
     }
     
-    private func transformToDomainError(urlError: URLError) -> RequestError.Url {
+    private func transformToDomainError(urlError: URLError) -> RequestError {
         switch urlError.code {
-        case .notConnectedToInternet: return .noConnection
-        case .timedOut: return .timeOut
-        case .networkConnectionLost: return .connectionLost
+        case .notConnectedToInternet: return .url(.noConnection)
+        case .timedOut: return .url(.timeOut)
+        case .networkConnectionLost: return .url(.connectionLost)
         default: return .generic
         }
     }
     
-    private func transformToDomainError(afError: AFError) -> RequestError.Request {
+    private func transformToDomainError(afError: AFError) -> RequestError {
         switch afError {
-        case .invalidURL: return .invalidUrl
-        case .parameterEncodingFailed: return .parameterEncodingFailed
-        case .responseSerializationFailed: return .responseSerializationFailed
-        case .responseValidationFailed: return .responseValidationFailed
-        default: return .generic
+        case .invalidURL: return .request(.invalidUrl)
+        case .parameterEncodingFailed: return .request(.parameterEncodingFailed)
+        case .responseSerializationFailed: return .request(.responseSerializationFailed)
+        case .responseValidationFailed: return .request(.responseValidationFailed)
+        default: return .request(.generic)
         }
     }
     
