@@ -90,7 +90,7 @@ class FeedViewController: UIViewController, UITableViewDelegate {
             
             guard let thisVC = self else { return }
             
-            let observable = thisVC.viewModel.getFactsList(searchTerm: "death_star")
+            let observable = thisVC.viewModel.getFactsList(searchTerm: term)
             
             observable
                 .bind(to: thisVC.currentState)

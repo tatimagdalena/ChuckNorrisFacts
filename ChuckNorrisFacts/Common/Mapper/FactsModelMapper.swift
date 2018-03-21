@@ -15,12 +15,12 @@ struct FactsModelMapper: MapFacts {
         do {
             return try JSONDecoder().decode(FactsQueryDataModel.self, from: jsonData)
         } catch {
-            throw RequestError.Response.cannotParse
+            throw RequestError.response(.cannotParse)
         }
     }
     
     func transformToFactsArray(factsQuery: FactsQueryDataModel) throws -> [Fact] {
-        guard let factsQueryResult = factsQuery.result else { throw RequestError.Response.missingParameter }
+        guard let factsQueryResult = factsQuery.result else { throw RequestError.response(.missingParameter) }
         var facts = [Fact]()
         for factResult in factsQueryResult {
             let fact = try self.transformToDomainModel(dataModel: factResult)
@@ -43,7 +43,7 @@ struct FactsModelMapper: MapFacts {
     private func transformToDomainModel(dataModel: FactsQueryDataModel.Result) throws -> Fact {
         guard let id = dataModel.id,
             let value = dataModel.value
-            else { throw RequestError.Response.missingParameter }
+            else { throw RequestError.response(.missingParameter) }
         
         return Fact(id: id, phrase: value, category: dataModel.category ?? [String]())
     }
