@@ -31,7 +31,7 @@ class MyMocks {
                 let queryResult = FactsQueryDataModel.Result(category: ["a-category"], icon_url: "some-url", id: "AlsfjokAKsj", url: "some-url", value: "a chuck norris fact")
                 return FactsQueryDataModel(total: 1, result: [queryResult])
             case .invalidJSON:
-                throw RequestError.Response.cannotParse
+                throw RequestError.response(.cannotParse)
             case .error:
                 throw RequestError.generic
             }

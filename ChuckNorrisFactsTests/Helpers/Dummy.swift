@@ -40,12 +40,12 @@ class Dummy {
     
     static let jsonHeader = ["Content-Type" : "application/json"]
     
-    private static func loadJson(named name: String) -> Data {
+    static func loadJson(named name: String) -> Data {
         do {
             let bundle = Bundle(for: self)
             let path = bundle.path(forResource: name, ofType: "json")
             let url = URL(fileURLWithPath: path!)
-            let data = try Data(contentsOf: url)
+            let data = try Data(contentsOf: url, options: .uncached)
             return data
         } catch {
             fatalError("It was not possible to load \(name).json from test folder.\nError: \(error)")
