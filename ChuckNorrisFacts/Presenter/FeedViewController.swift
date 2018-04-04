@@ -18,15 +18,29 @@ class FeedViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var callToActionButton: UIButton!
     
     // MARK: Properties
-    private var viewModel: FeedViewModel!
+    private var viewModel: FeedViewModel
     private let disposeBag = DisposeBag()
     private var currentState = Variable(FeedState.waitingForInput)
     
     // MARK: - Initializer -
     
-    convenience init(viewModel: FeedViewModel) {
-        self.init()
+    //
+    // Alternativaly use the convenience initializer and delete the following two initializers.
+    // By doing this way, the viewModel property must be optional. You can fix it by using:
+    // ` private var viewModel: FeedViewModel! `
+    //
+    //convenience init(viewModel: FeedViewModel) {
+    //        self.init()
+    //        self.viewModel = viewModel
+    //    }
+    
+    init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
+        super.init(nibName: "FeedViewController", bundle: Bundle.main)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Lifecycle -
