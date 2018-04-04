@@ -13,25 +13,9 @@ import RxCocoa
 class FeedViewController: UIViewController, UITableViewDelegate {
 
     // MARK: UI Properties
-    var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.estimatedRowHeight = 115
-        tableView.register(UINib(nibName: FeedViewCell.identifier, bundle: nil), forCellReuseIdentifier: FeedViewCell.identifier)
-        return tableView
-    }()
-    var messageLabel: UILabel = {
-       let label = UILabel()
-        label.sizeToFit()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-    var callToActionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Pesquisar", for: .normal)
-        button.sizeToFit()
-        return button
-    }()
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var callToActionButton: UIButton!
     
     // MARK: Properties
     private var viewModel: FeedViewModel!
@@ -50,12 +34,9 @@ class FeedViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(tableView)
-        view.addSubview(messageLabel)
-        view.addSubview(callToActionButton)
-        
-        addConstraints()
+        tableView.estimatedRowHeight = 115
+        tableView.register(UINib(nibName: FeedViewCell.identifier, bundle: nil), forCellReuseIdentifier: FeedViewCell.identifier)
+        callToActionButton.setTitle("Pesquisar", for: .normal)
         
         visibilityBindings()
         textBinding()
@@ -149,100 +130,6 @@ class FeedViewController: UIViewController, UITableViewDelegate {
             textField.placeholder = "Digite o termo"
         }
         present(alertController, animated: true, completion: nil)
-    }
-}
-
-// MARK: - UI Elements -
-
-extension FeedViewController {
-    
-    func addConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: tableView,
-                           attribute: .left,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .left,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        NSLayoutConstraint(item: tableView,
-                           attribute: .right,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .right,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        NSLayoutConstraint(item: tableView,
-                           attribute: .top,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .top,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        NSLayoutConstraint(item: tableView,
-                           attribute: .bottom,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .bottom,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        
-        
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: messageLabel,
-                           attribute: .centerX,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .centerX,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        NSLayoutConstraint(item: messageLabel,
-                           attribute: .centerY,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .centerY,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
-        NSLayoutConstraint(item: messageLabel,
-                           attribute: .left,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .left,
-                           multiplier: 1,
-                           constant: 20)
-            .isActive = true
-        NSLayoutConstraint(item: messageLabel,
-                           attribute: .right,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .right,
-                           multiplier: 1,
-                           constant: -20)
-            .isActive = true
-        
-        callToActionButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: callToActionButton,
-                           attribute: .top,
-                           relatedBy: .equal,
-                           toItem: messageLabel,
-                           attribute: .bottom,
-                           multiplier: 1,
-                           constant: 60)
-            .isActive = true
-        NSLayoutConstraint(item: callToActionButton,
-                           attribute: .centerX,
-                           relatedBy: .equal,
-                           toItem: view,
-                           attribute: .centerX,
-                           multiplier: 1,
-                           constant: 0)
-            .isActive = true
     }
 }
 

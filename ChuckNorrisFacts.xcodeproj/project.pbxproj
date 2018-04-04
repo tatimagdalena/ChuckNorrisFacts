@@ -29,6 +29,7 @@
 		1612190A2050A33500A0C125 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161219082050A32F00A0C125 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1612190C2051606A00A0C125 /* RequestErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */; };
 		161A5F1E206576FE00383A25 /* HTTPStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A5F1D206576FD00383A25 /* HTTPStub.swift */; };
+		16AA6A09207558EB001B8AD2 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16AA6A08207558EB001B8AD2 /* FeedViewController.xib */; };
 		16B52A892051F1F600FCD564 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A882051F1F600FCD564 /* Networking.swift */; };
 		16B52A8B205290D700FCD564 /* NetworkRequestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A8A205290D700FCD564 /* NetworkRequestsTests.swift */; };
 		16B52A90205294B600FCD564 /* HandleRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B52A8F205294B600FCD564 /* HandleRequestError.swift */; };
@@ -134,6 +135,7 @@
 		161219082050A32F00A0C125 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		1612190B2051606A00A0C125 /* RequestErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorHandlerTests.swift; sourceTree = "<group>"; };
 		161A5F1D206576FD00383A25 /* HTTPStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStub.swift; sourceTree = "<group>"; };
+		16AA6A08207558EB001B8AD2 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
 		16B52A882051F1F600FCD564 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		16B52A8A205290D700FCD564 /* NetworkRequestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestsTests.swift; sourceTree = "<group>"; };
 		16B52A8D2052932E00FCD564 /* Cuckoo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cuckoo.framework; path = Carthage/Build/iOS/Cuckoo.framework; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				41B382D42056DA770030362C /* FactOutput.swift */,
 				16B52A98205807E500FCD564 /* FeedStateMapper.swift */,
 				16B52AA62059B7DC00FCD564 /* FeedViewController.swift */,
+				16AA6A08207558EB001B8AD2 /* FeedViewController.xib */,
 				41AA7E14205AD0220041BB85 /* FeedViewCell.swift */,
 				41AA7E15205AD0220041BB85 /* FeedViewCell.xib */,
 			);
@@ -487,6 +490,7 @@
 			files = (
 				41AA7E17205AD0230041BB85 /* FeedViewCell.xib in Resources */,
 				161218C32049BA0C00A0C125 /* LaunchScreen.storyboard in Resources */,
+				16AA6A09207558EB001B8AD2 /* FeedViewController.xib in Resources */,
 				161218C02049BA0C00A0C125 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
