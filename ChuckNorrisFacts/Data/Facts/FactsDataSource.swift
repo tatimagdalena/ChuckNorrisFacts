@@ -33,7 +33,13 @@ extension FactsDataSource: FactsRetrievable {
         
         let queryParameters = ["query" : term as Any]
         
-        return networking.getHTTPRequestObservable(url: completeUrl, parameters: queryParameters, headers: nil)
+        let factsRequest = HTTPRequest(verb: .get,
+                                  url: completeUrl,
+                                  parameters: queryParameters,
+                                  parametersEncoding: .url,
+                                  headers: nil)
+        
+        return networking.httpRequestObservable(request: factsRequest)
             .map(mapper.transformToFactsQueryDataModel)
             .map(mapper.transformToFactsArray)
             .flatMap(mapper.transformToFactObservable)
